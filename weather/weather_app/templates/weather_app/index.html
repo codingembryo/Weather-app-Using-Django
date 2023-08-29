@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+</head>
+<body>
+    <h1>Weather Information</h1>
+    {% if weather_data %}
+        <p>Location: {{ weather_data.location }}</p>
+        <p>Temperature: {{ weather_data.temperature }}°C</p>
+        <p>Humidity: {{ weather_data.humidity }}%</p>
+        <p>Weather Condition: {{ weather_data.weather_condition }}</p>
+        <p>Wind Speed: {{ weather_data.wind_speed }} m/s</p>
+    {% else %}
+        <p>No weather data available.</p>
+    {% endif %}
+    <form method="post">
+        {% csrf_token %}
+        <label for="location">Enter location:</label>
+        <input type="text" name="location" required>
+        <button type="submit">Fetch Weather</button>
+    </form>
+</body>
+</html>
